@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'PagesController@index')->name('index')->middleware('verified');
+Auth::routes(['verify' => true]);
+
