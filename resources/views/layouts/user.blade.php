@@ -39,6 +39,9 @@
     <div class="page-wrapper">
         @include('partials.navbar')
         @yield('content')
+        </div>
+    </section>
+    </div>
     </div>
 
     <!-- Jquery JS-->

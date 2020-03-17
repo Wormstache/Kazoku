@@ -1,3 +1,4 @@
+@if (Auth::check())
 <!-- HEADER DESKTOP-->
 <header class="header-desktop4">
     <div class="container">
@@ -7,7 +8,6 @@
                     <img src="{{ asset('images/kazoku-logo.png') }}" alt="Kazoku" style="width:200px" />
                 </a>
             </div>
-            @auth
             <div class="header__tool">
                 <div class="header-button-item has-noti js-item-menu">
                     <i class="zmdi zmdi-notifications"></i>
@@ -101,9 +101,9 @@
                                 </div>
                                 <div class="content">
                                     <h5 class="name">
-                                        <a href="#">john doe</a>
+                                        <a href="#">{{ Auth::user()->full_name }}</a>
                                     </h5>
-                                    <span class="email">johndoe@example.com</span>
+                                    <span class="email">{{ Auth::user()->email }}</span>
                                 </div>
                             </div>
                             <div class="account-dropdown__body">
@@ -128,7 +128,192 @@
                     </div>
                 </div>
             </div>
-            @else
+        </div>
+    </div> 
+</header>
+<!-- WELCOME-->
+<section class="welcome2 p-t-40 p-b-55">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="au-breadcrumb3">
+                    <div class="au-breadcrumb-left">
+                        <span class="au-breadcrumb-span">You are here:</span>
+                        <ul class="list-unstyled list-inline au-breadcrumb__list">
+                            <li class="list-inline-item active">
+                                <a href="#">Home</a>
+                            </li>
+                            <li class="list-inline-item seprate">
+                                <span>/</span>
+                            </li>
+                            <li class="list-inline-item">Dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="welcome2-inner m-t-60">
+                    <div class="welcome2-greeting">
+                        <h1 class="title-6">Hi
+                            <span>{{ Auth::user()->first_name }}</span>, Welcome back</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                    </div>
+                    <form class="form-header form-header2" action="" method="post">
+                        <input class="au-input au-input--w435" type="text" name="search" placeholder="Search for datas &amp; reports...">
+                        <button class="au-btn--submit" type="submit">
+                            <i class="zmdi zmdi-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END WELCOME-->
+<div class="page-container3">
+    <section>
+        <div class="row">
+            <div class="col-md-3">
+                <!-- MENU SIDEBAR-->
+                <aside class="menu-sidebar3 js-spe-sidebar">
+                    <nav class="navbar-sidebar2 navbar-sidebar3">
+                        <ul class="list-unstyled navbar__list">
+                            <li class="active has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-tachometer-alt"></i>Dashboard 4
+                                    <span class="arrow">
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+                                </a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="index.html">Dashboard 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="index2.html">Dashboard 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="index3.html">Dashboard 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="index4.html">Dashboard 4</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="inbox.html">
+                                    <i class="fas fa-chart-bar"></i>Inbox</a>
+                                <span class="inbox-num">3</span>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-shopping-basket"></i>eCommerce</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('icon.index') }}">
+                                    <i class="fas fa-shopping-basket"></i>Icons</a>
+                            </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-trophy"></i>Features
+                                    <span class="arrow">
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+                                </a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="table.html">Tables</a>
+                                    </li>
+                                    <li>
+                                        <a href="form.html">Forms</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Calendar</a>
+                                    </li>
+                                    <li>
+                                        <a href="map.html">Maps</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-copy"></i>Pages
+                                    <span class="arrow">
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+                                </a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="login.html">Login</a>
+                                    </li>
+                                    <li>
+                                        <a href="register.html">Register</a>
+                                    </li>
+                                    <li>
+                                        <a href="forget-pass.html">Forget Password</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fas fa-desktop"></i>UI Elements
+                                    <span class="arrow">
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+                                </a>
+                                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                    <li>
+                                        <a href="button.html">Button</a>
+                                    </li>
+                                    <li>
+                                        <a href="badge.html">Badges</a>
+                                    </li>
+                                    <li>
+                                        <a href="tab.html">Tabs</a>
+                                    </li>
+                                    <li>
+                                        <a href="card.html">Cards</a>
+                                    </li>
+                                    <li>
+                                        <a href="alert.html">Alerts</a>
+                                    </li>
+                                    <li>
+                                        <a href="progress-bar.html">Progress Bars</a>
+                                    </li>
+                                    <li>
+                                        <a href="modal.html">Modals</a>
+                                    </li>
+                                    <li>
+                                        <a href="switch.html">Switchs</a>
+                                    </li>
+                                    <li>
+                                        <a href="grid.html">Grids</a>
+                                    </li>
+                                    <li>
+                                        <a href="fontawesome.html">FontAwesome</a>
+                                    </li>
+                                    <li>
+                                        <a href="typo.html">Typography</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </aside>
+                <!-- END MENU SIDEBAR-->
+            </div>
+            
+@else
+<header class="header-desktop4">
+    <div class="container">
+        <div class="header4-wrap">
+            <div class="header__logo">
+                <a href="{{ route('index') }}">
+                    <img src="{{ asset('images/kazoku-logo.png') }}" alt="Kazoku" style="width:200px" />
+                </a>
+            </div>
             <div class="header__tool">
                 <div>
                     <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -137,8 +322,10 @@
                     <a class="nav-link" href="{{ route('register') }}">Register</a>
                 </div>
             </div>
-            @endauth
         </div>
     </div>
 </header>
+@endif
 <!-- END HEADER DESKTOP -->
+    
+        
