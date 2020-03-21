@@ -35,7 +35,7 @@ class StoreIcon extends FormRequest
             'image' => $this->file('icon'),
             'title' => $this->input('title')
         ];
-
+        
         return $data;
     }
 }
