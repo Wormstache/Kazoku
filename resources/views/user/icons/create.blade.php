@@ -13,7 +13,7 @@
                                 <h3 class="text-center title-2">Pay Invoice</h3>
                             </div>
                             <hr>
-                            <form action="{{ route('icon.create') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('icon.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                                 <div class="row form-group">
                                     <div class="col col-md-3">

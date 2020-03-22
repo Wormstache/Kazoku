@@ -82,7 +82,7 @@ class IconController extends Controller
      */
     public function edit(Icon $icon)
     {
-        //
+        dd('sd');
     }
 
     /**
@@ -92,9 +92,23 @@ class IconController extends Controller
      * @param  \App\Icon  $icon
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Icon $icon)
+    public function update(StoreIcon $request, Icon $icon)
     {
-        //
+        dd('ds');
+        $icon = DB::transaction(function () use ($request, $icon) {
+            $icon->update($request->data());
+
+            if ($image = $request->file('icon')) {
+                $ImageUpload = Image::make($image);
+                $originalPath = public_path('images/');
+                $ImageUpload->save($originalPath.time().$image->getClientOriginalName());
+                $icons->image = time().$image->getClientOriginalName();
+            }
+            return $icon;
+        });
+        
+        return redirect()
+            ->route('icon.index');
     }
 
     /**
@@ -105,6 +119,9 @@ class IconController extends Controller
      */
     public function destroy(Icon $icon)
     {
-        //
+        $icon->delete();
+
+        return redirect()
+            ->route('icon.index');
     }
 }

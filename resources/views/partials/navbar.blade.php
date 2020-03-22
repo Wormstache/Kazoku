@@ -134,7 +134,7 @@
 <!-- WELCOME-->
 <section class="welcome2 p-t-40 p-b-55">
     <div class="container">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-12">
                 <div class="au-breadcrumb3">
                     <div class="au-breadcrumb-left">
@@ -151,21 +151,20 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="col-md-12">
                 <div class="welcome2-inner m-t-60">
                     <div class="welcome2-greeting">
                         <h1 class="title-6">Hi
                             <span>{{ Auth::user()->first_name }}</span>, Welcome back</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
                     </div>
-                    <form class="form-header form-header2" action="" method="post">
+                    {{-- <form class="form-header form-header2" action="" method="post">
                         <input class="au-input au-input--w435" type="text" name="search" placeholder="Search for datas &amp; reports...">
                         <button class="au-btn--submit" type="submit">
                             <i class="zmdi zmdi-search"></i>
                         </button>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>
@@ -214,6 +213,18 @@
                             <li>
                                 <a href="{{ route('icon.index') }}">
                                     <i class="fas fa-shopping-basket"></i>Icons</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('category.index') }}">
+                                    <i class="fas fa-shopping-basket"></i>Category</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('member.index') }}">
+                                    <i class="fas fa-shopping-basket"></i>Member</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('budget.index') }}">
+                                    <i class="fas fa-shopping-basket"></i>Budget</a>
                             </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">

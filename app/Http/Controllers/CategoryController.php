@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Icon;
+use App\Http\Requests\StoreCategory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        $icons = Icon::all();
+        return view('user.categories.index', compact('categories', 'icons'));
     }
 
     /**
@@ -24,7 +29,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $icons = Icon::all();
+        return view('user.categories.create', compact('icons'));
     }
 
     /**
@@ -33,9 +39,16 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategory $request)
     {
-        //
+        $categories = DB::transaction(function () use ($request) {
+            $categories = Category::create($request->data());
+
+            return $categories;
+        });
+
+        return redirect()
+            ->route('category.index');
     }
 
     /**
@@ -67,9 +80,15 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(StoreCategory $request, Category $category)
     {
-        //
+        $category = DB::transaction(function () use ($request, $category) {
+            $category->update($request->data());
+            return $category;
+        });
+        
+        return redirect()
+            ->route('category.index');
     }
 
     /**
@@ -80,6 +99,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()
+            ->route('category.index');
     }
 }

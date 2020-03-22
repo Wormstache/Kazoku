@@ -13,7 +13,7 @@
                                 <h3 class="text-center title-2">Pay Invoice</h3>
                             </div>
                             <hr>
-                            <form action="{{ route('category.create') }}" method="post">
+                            <form action="{{ route('category.store') }}" method="post">
                             @csrf
                                 <div class="row form-group">
                                     <div class="col col-md-3">
@@ -21,7 +21,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="title" name="title" placeholder="Text" class="form-control">
-                                        <small class="form-text text-muted">Eg: Shopping Cart</small>
+                                        <small class="form-text text-muted">Eg: Shopping</small>
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -29,12 +29,16 @@
                                         <label for="icon" class="form-control-label">Icon</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="file" id="icon" name="icon" class="form-control-file">
+                                        <select id="icon" name="icon" class="form-control">
+                                            @foreach($icons as $icon)
+                                                <option value={{ $icon->id }}>{{ $icon->title }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div>
                                     <button id="button" type="submit" class="btn btn-lg btn-info btn-block">
-                                        <span id="button">Add Icon</span>
+                                        <span id="button">Add Category</span>
                                     </button>
                                 </div>
                             </form>
