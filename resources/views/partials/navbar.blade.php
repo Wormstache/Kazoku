@@ -226,6 +226,10 @@
                                 <a href="{{ route('budget.index') }}">
                                     <i class="fas fa-shopping-basket"></i>Budget</a>
                             </li>
+                            <li>
+                                <a href="{{ route('expense.index') }}">
+                                    <i class="fas fa-shopping-basket"></i>Expense</a>
+                            </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
                                     <i class="fas fa-trophy"></i>Features

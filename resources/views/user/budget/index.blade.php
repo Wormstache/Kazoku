@@ -1,6 +1,6 @@
 @extends('layouts.user')
 @section('content')
-<div class="col-md-6 mx-auto">
+<div class="col-md-12">
     <div class="card">
         <div class="card-header bg-success">
             <strong class="card-title text-light">Budget</strong>

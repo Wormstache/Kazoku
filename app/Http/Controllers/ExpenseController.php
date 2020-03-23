@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Expense;
+use App\Category;
+use App\Member;
+use App\Budget;
+use App\Http\Requests\StoreExpense;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -14,7 +19,14 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        $budget = Budget::first();
+        $categories = Category::all();
+        $members = Member::all();
+        $expenses = Expense::whereMonth('date', date('m'))
+                            ->whereYear('date', date('Y'))
+                            ->orderBy('date', 'desc')
+                            ->get();
+        return view('user.expense.index', compact('budget', 'categories', 'members', 'expenses'));
     }
 
     /**
@@ -33,9 +45,14 @@ class ExpenseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreExpense $request)
     {
-        //
+        $expenses = DB::transaction(function () use ($request) {
+            $expenses = Expense::create($request->data());
+        });
+
+        return redirect()
+            ->route('expense.index');
     }
 
     /**
@@ -67,9 +84,15 @@ class ExpenseController extends Controller
      * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Expense $expense)
+    public function update(StoreExpense $request, Expense $expense)
     {
-        //
+        $expense = DB::transaction(function () use ($request, $expense) {
+            $expense->update($request->data());
+            return $expense;
+        });
+        
+        return redirect()
+            ->route('expense.index');
     }
 
     /**
@@ -80,6 +103,9 @@ class ExpenseController extends Controller
      */
     public function destroy(Expense $expense)
     {
-        //
+        $expense->delete();
+
+        return redirect()
+            ->route('expense.index');
     }
 }

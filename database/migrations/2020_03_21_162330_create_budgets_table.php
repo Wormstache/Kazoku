@@ -16,12 +16,6 @@ class CreateBudgetsTable extends Migration
         Schema::create('budgets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->float('amount');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
-            $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('member')->onDelete('cascade');
-            $table->date('date');
-            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

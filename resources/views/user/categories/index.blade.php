@@ -1,44 +1,52 @@
 @extends('layouts.user')
 @section('content')
-<div class="row m-t-30">
-    <div class="col-md-12">
-        <div class="table-data__tool">
-            <div class="table-data__tool-right">
-                <a href="{{ route('category.create') }}">
-                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="zmdi zmdi-plus"></i>add categories
-                    </button>
-                </a>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="row m-t-30">
+                    <div class="col-md-12">
+                        <div class="table-data__tool">
+                            <div class="table-data__tool-right">
+                                <a href="{{ route('category.create') }}">
+                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                        <i class="zmdi zmdi-plus"></i>add categories
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="table-responsive m-b-40">
+                        <table id="table_id" class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($categories as $category)
+                                <tr>
+                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $category->title }}</td>
+                                    <td><button class="btn btn-info" data-toggle="modal" data-target="#categoryEdit{{ $category->id }}" href="{{ route('category.edit',$category->id) }}"><i class="zmdi zmdi-edit"></i></button></td>
+                                    <td>
+                                        <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                                            <input type="hidden" name="_token" value="{{ csrf_token()}}">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit" class="btn btn-danger btn-xs" onclick=" return confirm('Are you sure?')";><i class="zmdi zmdi-delete"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="table-responsive m-b-40">
-        <table id="table_id" class="table table-borderless table-data3">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($categories as $category)
-                <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->title }}</td>
-                    <td><button class="btn btn-info" data-toggle="modal" data-target="#categoryEdit{{ $category->id }}" href="{{ route('category.edit',$category->id) }}"><i class="zmdi zmdi-edit"></i></button></td>
-                    <td>
-                        <form action="{{ route('category.destroy', $category->id) }}" method="post">
-                            <input type="hidden" name="_token" value="{{ csrf_token()}}">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                            <button type="submit" class="btn btn-danger btn-xs" onclick=" return confirm('Are you sure?')";><i class="zmdi zmdi-delete"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
         </div>
     </div>
 </div>
