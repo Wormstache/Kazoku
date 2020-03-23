@@ -211,6 +211,10 @@
                                     <i class="fas fa-shopping-basket"></i>eCommerce</a>
                             </li>
                             <li>
+                                <a href="{{ route('user.index') }}">
+                                    <i class="fas fa-shopping-basket"></i>Users</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('icon.index') }}">
                                     <i class="fas fa-shopping-basket"></i>Icons</a>
                             </li>

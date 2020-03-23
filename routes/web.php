@@ -30,3 +30,5 @@ Route::resource('member', 'MemberController');
 Route::resource('budget', 'BudgetController');
 
 Route::resource('expense', 'ExpenseController');
+
+Route::resource('user', 'UserController');
