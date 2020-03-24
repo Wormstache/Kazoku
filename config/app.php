@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Silber\Bouncer\BouncerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
         /*
          * Package Service Providers...

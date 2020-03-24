@@ -32,3 +32,5 @@ Route::resource('budget', 'BudgetController');
 Route::resource('expense', 'ExpenseController');
 
 Route::resource('user', 'UserController');
+
+Route::get('users', 'UserChartController@index');

@@ -1,7 +1,7 @@
 @extends('layouts.user')
 @section('content')
 <div class="col-lg-4">
-    <!-- CHART PERCENT-->
+    {{-- <!-- CHART PERCENT-->
     <div class="chart-percent-3 m-b-40">
         <h3 class="title-3 m-b-25">chart by %</h3>
         <div class="chart-note m-b-5">
@@ -16,6 +16,18 @@
             <canvas id="percent-chart2"></canvas>
         </div>
     </div>
-    <!-- END CHART PERCENT-->
+    <!-- END CHART PERCENT--> --}}
+    <h1>Users Graphs</h1>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card rounded">
+                <div class="card-body py-3 px-3">
+                    {!! $usersChart->container() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 @endsection
