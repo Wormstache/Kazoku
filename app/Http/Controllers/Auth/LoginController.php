@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    // protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -40,5 +41,14 @@ class LoginController extends Controller
     public function redirectToProvider()
     {
         return Socialite::driver('facebook')->redirect();
+    }
+
+    protected function redirectTo() {
+        if (Auth::check() && Auth::user()->load('roles')->roles->first()->name == 'admin') {
+            return '/adminRole';
+        }
+        else {
+            return '/userRole';
+        }
     }
 }

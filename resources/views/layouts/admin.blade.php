@@ -37,7 +37,7 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-        @include('partials.navbar')
+        @include('partials.adminNavbar')
         @yield('content')
         </div>
     </section>
@@ -71,8 +71,11 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(document).ready( function () {
-            $('#table_id').DataTable();
-        } );
+            $('#table_id').DataTable({
+                "pagingType": "full_numbers",
+                "paging": true,
+            });
+        });
     </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>

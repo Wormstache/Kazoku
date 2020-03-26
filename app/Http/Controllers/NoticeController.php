@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Notice;
+use App\Http\Requests\StoreNotice;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class NoticeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all(); 
-        return view('admin.users.index', compact('users')); 
+        $notices = Notice::all();
+        return view('admin.notice.index', compact('notices'));
     }
 
     /**
@@ -25,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.notice.create');
     }
 
     /**
@@ -34,18 +36,23 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreNotice $request)
     {
-        //
+        $notices = DB::transaction(function () use ($request) {
+            $notices = Notice::create($request->data());
+        });
+
+        return redirect()
+            ->route('notice.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Notice $notice)
     {
         //
     }
@@ -53,10 +60,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Notice $notice)
     {
         //
     }
@@ -65,26 +72,31 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreNotice $request, Notice $notice)
     {
-        //
+        $notice = DB::transaction(function () use ($request, $notice) {
+            $notice->update($request->data());
+            return $notice;
+        });
+        
+        return redirect()
+            ->route('notice.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Notice  $notice
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Notice $notice)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        $notice->delete();
 
         return redirect()
-            ->route('user.index');
+            ->route('notice.index');
     }
 }

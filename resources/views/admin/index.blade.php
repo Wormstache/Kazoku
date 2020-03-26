@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.admin')
 @section('content')
 <div class="col-lg-4">
     {{-- <!-- CHART PERCENT-->
@@ -17,7 +17,7 @@
         </div>
     </div>
     <!-- END CHART PERCENT--> --}}
-    <h1>Users Graphs</h1>
+    <h1>Amdin Graphs</h1>
 
     {{-- <div class="row">
         <div class="col-6">

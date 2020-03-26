@@ -8,7 +8,7 @@ use App\Http\Requests\StoreIcon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class IconController extends Controller
+class AdminIconController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class IconController extends Controller
     public function index()
     {
         $icons = Icon::all();
-        return view('user.icons.index', compact('icons'));
+        return view('admin.icons.index', compact('icons'));
     }
 
     /**
@@ -28,7 +28,7 @@ class IconController extends Controller
      */
     public function create()
     {
-        return view('user.icons.create');
+        return view('admin.icons.create');
     }
 
     /**
@@ -47,29 +47,22 @@ class IconController extends Controller
                 $originalPath = public_path('images/');
                 $ImageUpload->save($originalPath.time().$image->getClientOriginalName());
                 $icons->image = time().$image->getClientOriginalName();
-	            // $icons->save();
-
-                // $namefile = time().'.'.$image->getClientOriginalExtension();
-                // $location = public_path('image/'.$namefile);
-                // Image::make($image)->save([$location]);
-                // $icons->filename = $namefile;
             }
 
             return $icons;
         });
 
         return redirect()
-            ->route('icon.index');
-            // ->withSuccess(trans('messages.create_success', [ 'entity' => "Product Class '" . str_limit($productClass->title, 20) . "'" ]));
+            ->route('adminIcon.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Icon  $icon
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Icon $icon)
+    public function show($id)
     {
         //
     }
@@ -77,19 +70,19 @@ class IconController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Icon  $icon
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Icon $icon)
+    public function edit($id)
     {
-        dd('sd');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Icon  $icon
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(StoreIcon $request, Icon $icon)
@@ -107,13 +100,13 @@ class IconController extends Controller
         });
         
         return redirect()
-            ->route('icon.index');
+            ->route('adminIcon.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Icon  $icon
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Icon $icon)

@@ -210,19 +210,23 @@
                                 <a href="#">
                                     <i class="fas fa-shopping-basket"></i>eCommerce</a>
                             </li>
-                            {{-- <li>
+                            <li>
                                 <a href="{{ route('user.index') }}">
                                     <i class="fas fa-shopping-basket"></i>Users</a>
-                            </li> --}}
+                            </li>
                             <li>
-                                <a href="{{ route('icon.index') }}">
+                                <a href="{{ route('adminIcon.index') }}">
                                     <i class="fas fa-shopping-basket"></i>Icons</a>
                             </li>
                             <li>
-                                <a href="{{ route('category.index') }}">
+                                <a href="{{ route('adminCategory.index') }}">
                                     <i class="fas fa-shopping-basket"></i>Category</a>
                             </li>
                             <li>
+                                <a href="{{ route('notice.index') }}">
+                                    <i class="fas fa-shopping-basket"></i>Notice</a>
+                            </li>
+                            {{-- <li>
                                 <a href="{{ route('member.index') }}">
                                     <i class="fas fa-shopping-basket"></i>Member</a>
                             </li>
@@ -233,7 +237,7 @@
                             <li>
                                 <a href="{{ route('expense.index') }}">
                                     <i class="fas fa-shopping-basket"></i>Expense</a>
-                            </li>
+                            </li> --}}
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
                                     <i class="fas fa-trophy"></i>Features

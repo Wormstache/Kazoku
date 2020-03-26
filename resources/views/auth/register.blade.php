@@ -33,11 +33,6 @@
                             <label>Confirm Password</label>
                             <input class="au-input au-input--full" type="password" name="password_confirmation" placeholder="Confirm Password" required>
                         </div>
-                        <div class="login-checkbox">
-                            <label>
-                                <input type="checkbox" name="aggree">Agree the terms and policy
-                            </label>
-                        </div>
                         <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
                         <div class="social-login-content">
                             <div class="social-button">

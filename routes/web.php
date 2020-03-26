@@ -18,12 +18,17 @@
 Route::get('/', 'PagesController@index')->name('index')->middleware('verified');
 Auth::routes(['verify' => true]);
 
+Route::get('/adminRole', 'AdminRoleController@index');
+Route::get('/userRole', 'UserRoleController@index');
+
 Route::get('/redirect/{service}', 'SocialAuthController@redirect');
 Route::get('/callback/{service}', 'SocialAuthController@callback');
 
 Route::resource('icon', 'IconController');
+Route::resource('adminIcon', 'AdminIconController');
 
 Route::resource('category', 'CategoryController');
+Route::resource('adminCategory', 'AdminCategoryController');
 
 Route::resource('member', 'MemberController');
 
@@ -32,5 +37,7 @@ Route::resource('budget', 'BudgetController');
 Route::resource('expense', 'ExpenseController');
 
 Route::resource('user', 'UserController');
+
+Route::resource('notice', 'NoticeController');
 
 Route::get('users', 'UserChartController@index');
