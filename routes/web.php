@@ -18,8 +18,8 @@
 Route::get('/', 'PagesController@index')->name('index')->middleware('verified');
 Auth::routes(['verify' => true]);
 
-Route::get('/adminRole', 'AdminRoleController@index');
-Route::get('/userRole', 'UserRoleController@index');
+Route::get('/adminRole', 'AdminRoleController@index')->name('adminRole')->middleware('role:admin');
+Route::get('/userRole', 'UserRoleController@index')->name('userRole')->middleware('role:user');
 
 Route::get('/redirect/{service}', 'SocialAuthController@redirect');
 Route::get('/callback/{service}', 'SocialAuthController@callback');

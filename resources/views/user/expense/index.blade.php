@@ -8,6 +8,9 @@
         $budgetAmount = $budgetAmount-$expenseAmount;
     }
 @endphp
+@if ($budgetAmount >= $budget->amount)
+    
+@endif
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -164,5 +167,14 @@
         </div>
     </div>
 </div>
+<script>
+Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Your work has been saved',
+    showConfirmButton: false,
+    timer: 1500
+  })
+</script>
 @endforeach
 @endsection
