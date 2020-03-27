@@ -41,6 +41,8 @@ Route::resource('user', 'UserController');
 
 Route::resource('notice', 'NoticeController');
 
+Route::resource('note', 'NoteController');
+
 Route::get('users', 'UserChartController@index');
 
 Route::get('previousBudget', 'PreviousBudgetController@index')->name('previousBudgets');
