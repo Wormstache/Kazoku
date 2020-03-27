@@ -1,14 +1,22 @@
 @extends('layouts.user')
 @section('content')
-<div class="col-md-12">
-    <div class="card">
-        <div class="card-header bg-success">
-            <strong class="card-title text-light">Budget</strong>
-        </div>
-        <div class="card-body">
-            <p class="card-text">Amount: {{$budget->amount}}
-            </p>
-            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#budgetEdit{{ $budget->id }}" href="{{ route('budget.edit',$budget->id) }}">Edit</button>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header bg-success">
+                            <strong class="card-title text-light">Budget</strong>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Amount: {{$budget->amount}}
+                            </p>
+                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#budgetEdit{{ $budget->id }}" href="{{ route('budget.edit',$budget->id) }}">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

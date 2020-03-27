@@ -17,7 +17,7 @@
         </div>
     </div>
     <!-- END CHART PERCENT--> --}}
-    <h1>Report of February 2019</h1>
+    <h1>Report of January 2019</h1>
     <div class="row mt-4">
         <div class="col-md-6">
             <canvas id="myChart" width="400" height="400"></canvas>

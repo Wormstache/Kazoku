@@ -16,6 +16,7 @@
 // });
 
 Route::get('/', 'PagesController@index')->name('index')->middleware('verified');
+
 Auth::routes(['verify' => true]);
 
 Route::get('/adminRole', 'AdminRoleController@index')->name('adminRole')->middleware('role:admin');
@@ -41,3 +42,13 @@ Route::resource('user', 'UserController');
 Route::resource('notice', 'NoticeController');
 
 Route::get('users', 'UserChartController@index');
+
+Route::get('previousBudget', 'PreviousBudgetController@index')->name('previousBudgets');
+
+Route::get('/chart', function () {
+    return view('user.charts');
+})->name('charts');
+
+Route::get('/chart2', function () {
+    return view('user.charts2');
+})->name('charts2');

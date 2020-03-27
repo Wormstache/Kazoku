@@ -45,6 +45,7 @@ class LoginController extends Controller
 
     protected function redirectTo() {
         if (Auth::check() && Auth::user()->load('roles')->roles->first()->name == 'admin') {
+            // dd('admin');
             return '/adminRole';
         }
         else {
