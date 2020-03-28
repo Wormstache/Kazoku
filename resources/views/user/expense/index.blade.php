@@ -8,13 +8,28 @@
         $budgetAmount = $budgetAmount-$expenseAmount;
     }
 @endphp
-@if ($budgetAmount >= $budget->amount)
-    
-@endif
+
 <div class="main-content">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <h2 class="pb-4 display-5">Remaining Budget {{$budgetAmount}} / {{ $budget->amount }}</h2>
+            @if ($budgetAmount < 0)
+            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                <span class="badge badge-pill badge-danger">Warning</span>
+                You are over your budget.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @elseif ($budgetAmount <= 1500)
+            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                <span class="badge badge-pill badge-danger">Warning</span>
+                You are getting closer to your budget limit.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
             <div class="row">
                 @foreach ($expenses as $expense)
                 <div class="col-md-12">
